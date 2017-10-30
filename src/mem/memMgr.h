@@ -149,12 +149,23 @@ class MemRecycleList
    // DO NOT release the memory occupied by MemMgr/MemBlock
    void reset() {
       // TODO
-      if (_nextList == 0){
+      /*if (_nextList == 0){
         _first = 0;
         return;
       }
       else {
         _nextList->reset();
+      }
+      _first = 0;*/
+      /*if (_nextList != 0){
+        _first = 0;
+        delete _nextList;
+      }*/
+      if (_nextList != 0){
+        _first = 0;
+        _nextList->reset();
+        delete _nextList;
+        _nextList = 0;
       }
       _first = 0;
    }
